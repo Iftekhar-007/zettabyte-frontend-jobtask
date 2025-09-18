@@ -14,7 +14,7 @@ export default function Sidebar() {
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="p-2 m-2 text-white rounded-md"
+        className="fixed p-2 m-2 text-white rounded-md"
       >
         <IoMenu size={40}></IoMenu>
       </button>
