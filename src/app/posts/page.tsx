@@ -1,6 +1,9 @@
 "use client"
 import useFetch from '@/lib/api/useFetch';
+
 import React from 'react';
+import PostCard from '../components/PostCard';
+// import { number } from 'framer-motion';
 
 type Post = {
  userId : number
@@ -35,13 +38,13 @@ const Posts = () => {
     );
   }
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+        <div className='mt-20'>
+            <h2 className='text-3xl font-bold text-center mb-5'>All Posts</h2>
+   <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
             {
-                data?.map((Post)=><div key={Post.id} className='p-5 shadow-2xl bg-gray-800 rounded-2xl'>
-                    <h2 className='text-xl font-semibold mb-2'>{Post.title}</h2>
-                    <p className='text-sm'>{Post.body}</p>
-                </div>)
+                data?.map((Post)=><PostCard key={Post.id} id={Post.id} title={Post.title} body={Post.body}></PostCard>)
             }
+        </div>
         </div>
     );
 };
