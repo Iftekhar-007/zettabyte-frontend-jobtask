@@ -62,7 +62,10 @@ export default function Sidebar() {
                 >
                   Users
                 </a>
-                <a href="#" className="block p-2 hover:bg-gray-700 rounded">
+                <a
+                  href="/error"
+                  className="block p-2 hover:bg-gray-700 rounded"
+                >
                   News Portals(err)
                 </a>
               </nav>
