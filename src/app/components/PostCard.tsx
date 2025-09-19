@@ -18,7 +18,7 @@ const PostCard = ({id,title,body,index}:postprops) => {
       viewport={{ once: true, amount: 0.2 }} 
       className=" p-4 rounded-2xl shadow-2xl mb-4 bg-gray-800"
     >
-      <h2 className="text-xl font-bold mb-2">{title.substring(0,30)}</h2>
+      <h2 className="text-xl font-bold mb-3">{title.substring(0,30)}</h2>
       <p className="line-clamp-3">{body}</p>
       <Link href={`/posts/${id}`} className="text-blue-500 mt-2 inline-block">
         Read More
