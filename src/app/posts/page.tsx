@@ -42,7 +42,7 @@ const Posts = () => {
             <h2 className='text-3xl font-bold text-center mb-5'>All Posts</h2>
    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
             {
-                data?.map((Post)=><PostCard key={Post.id} id={Post.id} title={Post.title} body={Post.body}></PostCard>)
+                data?.map((Post,index)=><PostCard key={Post.id} index={index} id={Post.id} title={Post.title} body={Post.body}></PostCard>)
             }
         </div>
         </div>
