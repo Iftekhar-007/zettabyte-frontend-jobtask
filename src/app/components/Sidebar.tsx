@@ -38,7 +38,7 @@ export default function Sidebar() {
               animate={{ x: 0 }}
               exit={{ x: -400 }}
               transition={{ type: "spring", stiffness: 200, damping: 30 }}
-              className="fixed top-0 left-0 w-80 h-full bg-gray-900 text-white z-50 p-4"
+              className="fixed top-0 left-0 w-80 h-full bg-gray-800 text-white z-50 p-4"
             >
               {/* Close Button */}
               <button
