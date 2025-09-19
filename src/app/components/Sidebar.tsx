@@ -50,10 +50,16 @@ export default function Sidebar() {
 
               {/* Drawer Options */}
               <nav className="space-y-2">
-                <Link href="/posts" className="block p-2 hover:bg-gray-700 rounded">
+                <Link
+                  href="/posts"
+                  className="block p-2 hover:bg-gray-700 rounded"
+                >
                   Posts
                 </Link>
-                <a href="#" className="block p-2 hover:bg-gray-700 rounded">
+                <a
+                  href="/users"
+                  className="block p-2 hover:bg-gray-700 rounded"
+                >
                   Users
                 </a>
                 <a href="#" className="block p-2 hover:bg-gray-700 rounded">

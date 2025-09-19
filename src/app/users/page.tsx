@@ -1,27 +1,21 @@
 "use client";
 import useFetch from "@/lib/api/useFetch";
-import { useParams } from "next/navigation";
 import React from "react";
+import { User } from "../types/User";
+import UserCard from "../components/UserCard";
 
-type postDetail = {
-  userid: number;
-  id: number;
-  title: string;
-  body: string;
-};
-
-const PostDetail = () => {
-  const { id } = useParams();
-
-  const { data, error, loading } = useFetch<postDetail>(
-    `https://jsonplaceholder.typicode.com/posts/${id}`
-  );
+const Users = () => {
+  const {
+    data: users,
+    error,
+    loading,
+  } = useFetch<User[]>("https://jsonplaceholder.typicode.com/users");
 
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center py-10">
         <div className="w-10 h-10 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
-        <p className="mt-3 text-gray-600 font-medium">Loading Post...</p>
+        <p className="mt-3 text-gray-600 font-medium">Loading posts...</p>
       </div>
     );
   }
@@ -37,13 +31,12 @@ const PostDetail = () => {
     );
   }
   return (
-    <div className="mt-10">
-      <h2 className="font-bold text-xl md:text-2xl lg:text-3xl">
-        {data?.title}
-      </h2>
-      <p className="text-sm mt-5">{data?.body}</p>
+    <div>
+      {users?.map((user) => (
+        <UserCard key={user.id} user={user}></UserCard>
+      ))}
     </div>
   );
 };
 
-export default PostDetail;
+export default Users;
