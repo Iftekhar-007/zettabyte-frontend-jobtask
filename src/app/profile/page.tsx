@@ -39,7 +39,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="p-6 max-w-md mx-auto bg-white rounded-lg shadow-md text-center">
+    <div className="p-6 max-w-md mx-auto bg-white rounded-lg shadow-md text-center mt-10">
       {/* Profile Image */}
       {session.user?.image && (
         <div className="flex justify-center mb-4">
@@ -54,7 +54,9 @@ export default function ProfilePage() {
       )}
 
       {/* Name */}
-      <h1 className="text-2xl font-bold mb-2">{session.user?.name}</h1>
+      <h1 className="text-2xl text-black font-bold mb-2">
+        {session.user?.name}
+      </h1>
 
       {/* Email */}
       <p className="text-gray-600 mb-6">{session.user?.email}</p>

@@ -66,7 +66,7 @@ export default function Sidebar() {
                   Users
                 </Link>
                 <Link
-                  href="/error"
+                  href="/news"
                   className="block p-2 hover:bg-gray-700 rounded"
                 >
                   News Portals(err)
