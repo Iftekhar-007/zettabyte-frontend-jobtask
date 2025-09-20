@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { IoMenu } from "react-icons/io5";
 import { MdMenuOpen } from "react-icons/md";
 import Link from "next/link";
+import { FcGoogle } from "react-icons/fc";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,7 +39,7 @@ export default function Sidebar() {
               animate={{ x: 0 }}
               exit={{ x: -400 }}
               transition={{ type: "spring", stiffness: 200, damping: 30 }}
-              className="fixed top-0 left-0 w-80 h-full bg-gray-800 text-white z-50 p-4"
+              className="fixed top-0 left-0 w-80 h-full bg-gray-800 text-white z-50 p-4 flex flex-col"
             >
               {/* Close Button */}
               <button
@@ -49,7 +50,7 @@ export default function Sidebar() {
               </button>
 
               {/* Drawer Options */}
-              <nav className="space-y-2">
+              <nav className="space-y-2 flex-1">
                 <Link
                   href="/posts"
                   className="block p-2 hover:bg-gray-700 rounded"
@@ -69,6 +70,18 @@ export default function Sidebar() {
                   News Portals(err)
                 </a>
               </nav>
+
+              {/* google button added */}
+
+              <div className="mt-auto">
+                <button
+                  onClick={() => alert("Google login clicked!")}
+                  className="w-full flex items-center justify-center gap-2 bg-white text-gray-800 py-2 px-4 rounded-md transition hover:bg-gray-100"
+                >
+                  <FcGoogle size={22} /> {/* 👈 React Icon used */}
+                  Login with Google
+                </button>
+              </div>
             </motion.div>
           </>
         )}
