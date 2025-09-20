@@ -6,9 +6,11 @@ import { IoMenu } from "react-icons/io5";
 import { MdMenuOpen } from "react-icons/md";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { data: session } = useSession();
 
   return (
     <div>
@@ -57,30 +59,52 @@ export default function Sidebar() {
                 >
                   Posts
                 </Link>
-                <a
+                <Link
                   href="/users"
                   className="block p-2 hover:bg-gray-700 rounded"
                 >
                   Users
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/error"
                   className="block p-2 hover:bg-gray-700 rounded"
                 >
                   News Portals(err)
-                </a>
+                </Link>
+
+                {session ? (
+                  <>
+                    <Link
+                      href={"/profile"}
+                      className="block p-2 hover:bg-gray-700 rounded"
+                    >
+                      User Profile
+                    </Link>
+                  </>
+                ) : (
+                  <></>
+                )}
               </nav>
 
               {/* google button added */}
 
               <div className="mt-auto">
-                <button
-                  onClick={() => alert("Google login clicked!")}
-                  className="w-full flex items-center justify-center gap-2 bg-white text-gray-800 py-2 px-4 rounded-md transition hover:bg-gray-100"
-                >
-                  <FcGoogle size={22} /> {/* 👈 React Icon used */}
-                  Login with Google
-                </button>
+                {session ? (
+                  <button
+                    onClick={() => signOut({ callbackUrl: "/" })}
+                    className="w-full flex items-center justify-center gap-2 bg-white text-black py-2 px-4 rounded-md hover:bg-gray-950 hover:text-white"
+                  >
+                    Sign out ({session.user?.name})
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => signIn("google")}
+                    className="w-full flex items-center justify-center gap-2 bg-white text-gray-800 py-2 px-4 rounded-md hover:bg-gray-950 hover:text-white"
+                  >
+                    <FcGoogle size={22} />
+                    Login with Google
+                  </button>
+                )}
               </div>
             </motion.div>
           </>
