@@ -7,6 +7,13 @@ import { MdMenuOpen } from "react-icons/md";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { signIn, signOut, useSession } from "next-auth/react";
+import {
+  FaFileAlt,
+  FaUsers,
+  FaNewspaper,
+  FaUserCircle,
+  FaHome,
+} from "react-icons/fa";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,40 +61,43 @@ export default function Sidebar() {
               {/* Drawer Options */}
               <nav className="space-y-2 flex-1">
                 <Link
+                  href="/"
+                  className="flex items-center gap-2 p-2 hover:bg-gray-700 rounded"
+                >
+                  <FaHome /> Home
+                </Link>
+                <Link
                   href="/posts"
-                  className="block p-2 hover:bg-gray-700 rounded"
+                  className="flex items-center gap-2 p-2 hover:bg-gray-700 rounded"
                 >
-                  Posts
-                </Link>
-                <Link
-                  href="/users"
-                  className="block p-2 hover:bg-gray-700 rounded"
-                >
-                  Users
-                </Link>
-                <Link
-                  href="/news"
-                  className="block p-2 hover:bg-gray-700 rounded"
-                >
-                  News Portals(err)
+                  <FaFileAlt /> Posts
                 </Link>
 
-                {session ? (
-                  <>
-                    <Link
-                      href={"/profile"}
-                      className="block p-2 hover:bg-gray-700 rounded"
-                    >
-                      User Profile
-                    </Link>
-                  </>
-                ) : (
-                  <></>
+                <Link
+                  href="/users"
+                  className="flex items-center gap-2 p-2 hover:bg-gray-700 rounded"
+                >
+                  <FaUsers /> Users
+                </Link>
+
+                <Link
+                  href="/news"
+                  className="flex items-center gap-2 p-2 hover:bg-gray-700 rounded"
+                >
+                  <FaNewspaper /> News Portals(err)
+                </Link>
+
+                {session && (
+                  <Link
+                    href="/profile"
+                    className="flex items-center gap-2 p-2 hover:bg-gray-700 rounded"
+                  >
+                    <FaUserCircle /> User Profile
+                  </Link>
                 )}
               </nav>
 
-              {/* google button added */}
-
+              {/* Google login/signout */}
               <div className="mt-auto">
                 {session ? (
                   <button
