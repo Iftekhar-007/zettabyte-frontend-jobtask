@@ -3,11 +3,15 @@
 import useFetch from "@/lib/api/useFetch";
 import { useState } from "react";
 
+interface DemoData {
+  [key: string]: unknown;
+}
+
 export default function IntentionalErrorDemo() {
   const [trigger, setTrigger] = useState(false);
 
   // Use the hook only when trigger is true
-  const { data, error, loading } = useFetch<any>(
+  const { data, error, loading } = useFetch<DemoData>(
     trigger ? "/invalid-endpoint" : ""
   );
 
